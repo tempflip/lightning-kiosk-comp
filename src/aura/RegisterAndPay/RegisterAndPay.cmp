@@ -1,0 +1,16 @@
+<aura:component controller="RegisterAndPayController">
+
+	
+	<ui:inputText aura:id="firstName" label="First Name" />
+
+	<ui:inputText aura:id="lastName" label="Last Name" />
+
+	<ui:inputEmail aura:id="email" label="Email" />
+
+	<ui:inputNumber aura:id="ccNumber" label="Credit Card Number"/>
+
+	<textarea id="imgData" aura:id="imgData"></textarea>
+
+	<ui:button label="Register" press="{!c.onRegButtonPress}" />
+
+</aura:component>
