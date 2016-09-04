@@ -1,11 +1,11 @@
 <apex:page showHeader="true" sidebar="true">
 	<apex:includeLightning />
 
-	<div id="lDiv" />
+	<div id="lDiv" />1
 
 	<script>
 		$Lightning.use('c:lout1', function() {
-			$Lightning.createComponent('c:counter',
+			$Lightning.createComponent('c:RegisterAndPay',
 				{},
 				"lDiv",
 				function(cmp) {

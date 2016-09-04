@@ -23,7 +23,7 @@
 	<types>
 		<members>lout1</members>
 		<members>counter</members>
-		<members>lout2</members>
+		<members>RegisterAndPay</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>33.0</version>
