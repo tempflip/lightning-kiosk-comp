@@ -1,0 +1,11 @@
+<aura:component>
+	<aura:attribute name="count" type="decimal" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<h2>A counter.</h2>
+	<br/>
+	Count: {!v.count}
+
+	<br/>
+	<button onclick="{!c.plusOne}" id="plusButton">+++</button>
+</aura:component>

@@ -1,0 +1,19 @@
+<apex:page showHeader="true" sidebar="true">
+	<apex:includeLightning />
+
+	<div id="lDiv" />
+
+	<script>
+		$Lightning.use('c:lout1', function() {
+			$Lightning.createComponent('c:counter',
+				{},
+				"lDiv",
+				function(cmp) {
+					console.log('maki:', cmp)
+				}
+			);
+		});
+	</script>
+
+	{!$API.session_id}
+</apex:page>
