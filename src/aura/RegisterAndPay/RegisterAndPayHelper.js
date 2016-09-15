@@ -14,7 +14,6 @@
 		action.setParams(params);
 
 		action.setCallback(this, function(res) {
-			console.log('callback');
 			if (res.getState() != 'SUCCESS') {
 				console.log('error', res.getError());
 				return;
@@ -24,9 +23,53 @@
 		$A.enqueueAction(action);
 	},
 
+	getEventList : function(cmp) {
+		var action = cmp.get('c.getEventList');
+		action.setCallback(this, function(res) {
+			if (res.getState() != 'SUCCESS') {
+				console.log('error', res.getError()[0].message );
+				return;
+			}
+
+			this.setEventsAndTickets(cmp, res.getReturnValue());			
+		});
+
+		$A.enqueueAction(action);
+	},
+
 	registerSuccess: function(cmp, cus) {
 		console.log('juuhuuu', cus.Id);
-	}
+	},
 
+	setEventsAndTickets: function(cmp, eventList) {
+		cmp.set('v.eventList', eventList);
+	},
+
+	getTicketsForEv: function(cmp, evId) {
+		var evList = cmp.get('v.eventList');
+		evList.forEach(function(e) {
+			if (e.Id == evId) {
+				console.log('jep', e);
+				cmp.set('v.ticketList', e.bt_events__Event_Tickets__r);
+			}
+		});
+
+	},
+
+	setPrice: function(cmp, ticketId) {
+		console.log('ticket selected', ticketId);
+		cmp.get('v.ticketList').forEach(function(e) {
+			console.log(e.Id, e.Id);
+			if (e.Id == ticketId) {
+				console.log(e.bt_events__Ticket_Price__c, ticketId);
+				cmp.set('v.ticketPrice', e.bt_events__Ticket_Price__c);
+			}
+		});
+
+	},
+
+	showCam: function(cmp) {
+		console.log('### showCam');
+	}
 	
 })

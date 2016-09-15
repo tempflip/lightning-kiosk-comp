@@ -30,4 +30,16 @@ public with sharing class RegisterAndPayController {
 		return c;
 
 	}
+
+	@AuraEnabled
+	public static bt_events__Event__c[] getEventList() {
+		bt_events__Event__c[] evList = [SELECT Name
+										, (SELECT Name,
+											bt_events__Ticket_Price__c
+											FROM bt_events__Event_Tickets__r)
+										FROM bt_events__Event__c];
+
+		return evList;
+	}
+
 }

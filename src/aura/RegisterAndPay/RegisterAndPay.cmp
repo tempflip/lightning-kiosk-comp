@@ -1,16 +1,82 @@
 <aura:component controller="RegisterAndPayController">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:attribute name="eventList" type="bt_events__Event__c[]" />
+	<aura:attribute name="ticketList" type="bt_events__Event_Ticket__c[]" />
+	<aura:attribute name="ticketPrice" type="Decimal" />
 
+
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-01">First Name</label>
+
+		<div class="slds-form-element__control">
+			<ui:inputText aura:id="firstName" class="slds-input"/>
+		</div>
+	</div>
+
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-01">Last Name</label>
+
+		<div class="slds-form-element__control">
+			<ui:inputText aura:id="lastName" class="slds-input"/>
+		</div>
+	</div>
+
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-01">Email</label>
+
+		<div class="slds-form-element__control">
+			<ui:inputEmail aura:id="email" class="slds-input"/>
+		</div>
+	</div>
+
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-01">Credit Card Number</label>
 	
-	<ui:inputText aura:id="firstName" label="First Name" />
+		<div class="slds-form-element__control">
+			<ui:inputNumber aura:id="ccNumber" class="slds-input"/>
+		</div>
+	</div>
 
-	<ui:inputText aura:id="lastName" label="Last Name" />
 
-	<ui:inputEmail aura:id="email" label="Email" />
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="select-01">Event</label>
 
-	<ui:inputNumber aura:id="ccNumber" label="Credit Card Number"/>
+		<div class="slds-form-element__control">
+			
+			<div class="slds-select_container">
+				
+				<ui:inputSelect aura:id="eventSelector" class="slds-select" change="{!c.onEventChange}">
+					<ui:inputSelectOption text="null" label="-- Select Event --" />
+					<aura:iteration items="{!v.eventList}" var="event">
+						<ui:inputSelectOption text="{!event.Id}" label="{!event.Name}" />
+					</aura:iteration>
+				</ui:inputSelect>
+			</div>
+		</div>
+	</div>
+
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="select-01">Ticket</label>
+
+		<div class="slds-form-element__control">
+			
+			<div class="slds-select_container">
+				
+				<ui:inputSelect aura:id="ticketSelector" class="slds-select" change="{!c.onTicketChange}">
+					<ui:inputSelectOption text="null" label="-- Select Ticket --" />
+					<aura:iteration items="{!v.ticketList}" var="ticket">
+						<ui:inputSelectOption text="{!ticket.Id}" label="{!ticket.Name}" />
+					</aura:iteration>
+				</ui:inputSelect>
+			</div>
+		</div>
+	</div>
 
 	<textarea id="imgData" aura:id="imgData"></textarea>
 
-	<ui:button label="Register" press="{!c.onRegButtonPress}" />
+
+	<ui:button label="Register" press="{!c.onRegButtonPress}" class="slds-button slds-button--inverse"/>
+
+	{!v.ticketPrice}
 
 </aura:component>
