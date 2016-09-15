@@ -27,6 +27,10 @@
 
 	showCCForm : function(cmp, event, helper) {
 		helper.showCCForm(cmp);	
+	},
+
+	nextCustomer : function(cmp, event, helper) {
+		helper.showEventsForm(cmp);
 	}
 
 

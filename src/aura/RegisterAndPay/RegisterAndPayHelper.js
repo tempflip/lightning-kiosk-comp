@@ -39,6 +39,7 @@
 
 	registerSuccess: function(cmp, cus) {
 		console.log('juuhuuu', cus.Id);
+		this.showSuccess(cmp);
 	},
 
 	setEventsAndTickets: function(cmp, eventList) {
@@ -56,13 +57,21 @@
 	},
 
 	setPrice: function(cmp, ticketId) {
+		var that = this;
 		cmp.get('v.ticketList').forEach(function(e) {
 			console.log(e.Id, e.Id);
 			if (e.Id == ticketId) {
 				cmp.set('v.ticketPrice', e.bt_events__Ticket_Price__c);
+				that.hideAll(cmp);
 			}
 		});
 
+	},
+
+	hideAll: function(cmp) {
+		$A.util.addClass(cmp.find('eventForm'), 'hide');
+		$A.util.addClass(cmp.find('ccForm'), 'hide');		
+		$A.util.addClass(cmp.find('successForm'), 'hide');
 	},
 
 	showCam: function(cmp) {
@@ -70,9 +79,18 @@
 	},
 
 	showCCForm: function(cmp) {
-		$A.util.addClass(cmp.find('eventForm'), 'hide');
+		this.hideAll(cmp);
 		$A.util.removeClass(cmp.find('ccForm'), 'hide');
-	}
+	},
 
+	showSuccess: function(cmp) {
+		this.hideAll(cmp);
+		$A.util.removeClass(cmp.find('successForm'), 'hide');		
+	},
+
+	showEventsForm: function(cmp) {
+		this.hideAll(cmp);
+		$A.util.removeClass(cmp.find('eventForm'), 'hide');		
+	}
 
 })

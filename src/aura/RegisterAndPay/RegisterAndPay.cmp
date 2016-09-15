@@ -39,12 +39,34 @@
 			<label class="slds-form-element__label" for="text-input-01">Credit Card Number</label>
 		
 			<div class="slds-form-element__control">
-				<ui:inputNumber aura:id="ccNumber" class="slds-input"/>
+				<ui:inputText aura:id="ccNumber" class="slds-input"/>
 			</div>
 		</div>
 
+
+		<form class="slds-form--inline">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="name">Exp.Month</label>
+
+				<div class="slds-form-element__control">
+					<ui:inputText aura:id="expMonth" class="slds-input"/>
+				</div>
+			</div>
+
+			<div class="slds-form-element">
+				<label class="slds-form-element__label" for="name">Exp.Year</label>
+
+				<div class="slds-form-element__control">
+					<ui:inputText aura:id="expYear" class="slds-input"/>
+				</div>
+			</div>
+
+		</form>
+
+
+
 		<div>
-			<ui:button label="Register" press="{!c.onRegButtonPress}" class="slds-button slds-button--inverse"/>
+			<button onclick="{!c.onRegButtonPress}" class="slds-button slds-button--inverse">Register</button>
 		</div>
 
 	</div>
@@ -88,12 +110,18 @@
 	
 	</div>
 
+	<div aura:id="successForm" class="hide">
+		Success !
+		<br/>
+		<button class="slds-button slds-button--inverse" onclick="{!c.nextCustomer}">Next Customer</button>
+	</div>
+
 
 	<!-- support elements -->
 
-	<textarea id="imgData" aura:id="imgData"></textarea>
+	<textarea class="hide" id="imgData" aura:id="imgData"></textarea>
 
-	<button id="showCCformButton" onclick="{!c.showCCForm}">show cc form</button>
+	<button class="hide" id="showCCformButton" onclick="{!c.showCCForm}">show cc form</button>
 
 
 </aura:component>
