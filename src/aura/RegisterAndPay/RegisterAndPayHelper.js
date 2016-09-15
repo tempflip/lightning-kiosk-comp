@@ -49,7 +49,6 @@
 		var evList = cmp.get('v.eventList');
 		evList.forEach(function(e) {
 			if (e.Id == evId) {
-				console.log('jep', e);
 				cmp.set('v.ticketList', e.bt_events__Event_Tickets__r);
 			}
 		});
@@ -57,11 +56,9 @@
 	},
 
 	setPrice: function(cmp, ticketId) {
-		console.log('ticket selected', ticketId);
 		cmp.get('v.ticketList').forEach(function(e) {
 			console.log(e.Id, e.Id);
 			if (e.Id == ticketId) {
-				console.log(e.bt_events__Ticket_Price__c, ticketId);
 				cmp.set('v.ticketPrice', e.bt_events__Ticket_Price__c);
 			}
 		});
@@ -70,6 +67,12 @@
 
 	showCam: function(cmp) {
 		console.log('### showCam');
+	},
+
+	showCCForm: function(cmp) {
+		$A.util.addClass(cmp.find('eventForm'), 'hide');
+		$A.util.removeClass(cmp.find('ccForm'), 'hide');
 	}
-	
+
+
 })

@@ -23,6 +23,10 @@
 		var ticketId = cmp.find('ticketSelector').get('v.value');
 		helper.showCam(cmp);
 		helper.setPrice(cmp, ticketId);
+	},
+
+	showCCForm : function(cmp, event, helper) {
+		helper.showCCForm(cmp);	
 	}
 
 
