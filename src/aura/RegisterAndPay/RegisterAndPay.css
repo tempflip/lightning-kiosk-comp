@@ -1,3 +1,21 @@
 .THIS.hide {
     display: none !important;
 }
+
+.THIS .sectionHeader {
+	font-size: 26px;
+	margin-bottom: 40px;
+}
+
+.THIS .paymentInfo {
+    font-size: 20px;
+    margin-top: 42px;
+    margin-bottom: 14px;
+}
+
+.THIS .successDiv {
+	font-size: 26px;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 20px;
+}

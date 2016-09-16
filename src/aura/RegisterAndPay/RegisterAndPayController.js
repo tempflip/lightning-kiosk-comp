@@ -4,14 +4,17 @@
 	},
 
 	onRegButtonPress : function(cmp, event, helper) {
-		console.log('hallll');
 		var firstName = cmp.find('firstName').get('v.value');
 		var lastName = cmp.find('lastName').get('v.value');
 		var email = cmp.find('email').get('v.value');
 		var ccNumber = cmp.find('ccNumber').get('v.value');
+		var expMonth = cmp.find('expMonth').get('v.value');
+		var expYear = cmp.find('expYear').get('v.expYear');
+		var amount = cmp.get('v.ticketPrice');
+
 		var imgData = cmp.find('imgData').getElement().value;
 		
-		helper.regCustomer(cmp, firstName, lastName, email, ccNumber, imgData);
+		helper.regCustomer(cmp, firstName, lastName, email, ccNumber, expMonth, expYear, amount, imgData);
 	},
 
 	onEventChange : function(cmp, event, helper) {

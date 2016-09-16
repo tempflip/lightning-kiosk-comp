@@ -7,6 +7,10 @@
 
 	<div aura:id="ccForm" class="hide">
 
+		<div class="sectionHeader">
+			3. Your payment information
+		</div>
+
 		<div class="slds-form-element">
 			<label class="slds-form-element__label" for="text-input-01">First Name</label>
 
@@ -31,7 +35,7 @@
 			</div>
 		</div>
 
-		<div>
+		<div class="paymentInfo">
 			You pay: ${!v.ticketPrice}
 		</div>
 
@@ -44,35 +48,40 @@
 		</div>
 
 
-		<form class="slds-form--inline">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label" for="name">Exp.Month</label>
+		<div style="margin-top: 18px">
+			<form class="slds-form--inline">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label" for="name">Exp.Month</label>
 
-				<div class="slds-form-element__control">
-					<ui:inputText aura:id="expMonth" class="slds-input"/>
+					<div class="slds-form-element__control">
+						<ui:inputText aura:id="expMonth" class="slds-input"/>
+					</div>
 				</div>
-			</div>
 
-			<div class="slds-form-element">
-				<label class="slds-form-element__label" for="name">Exp.Year</label>
+				<div class="slds-form-element">
+					<label class="slds-form-element__label" for="name">Exp.Year</label>
 
-				<div class="slds-form-element__control">
-					<ui:inputText aura:id="expYear" class="slds-input"/>
+					<div class="slds-form-element__control">
+						<ui:inputText aura:id="expYear" class="slds-input"/>
+					</div>
 				</div>
-			</div>
 
-		</form>
+			</form>
+		</div>
 
 
-
-		<div>
-			<button onclick="{!c.onRegButtonPress}" class="slds-button slds-button--inverse">Register</button>
+		<div style="margin-top: 30px;">
+			<button onclick="{!c.onRegButtonPress}" class="slds-button slds-button--brand">Register</button>
 		</div>
 
 	</div>
 
 
 	<div aura:id="eventForm">
+
+		<div class="sectionHeader">
+			1. Please select your ticket
+		</div>
 
 		<div class="slds-form-element">
 			<label class="slds-form-element__label" for="select-01">Event</label>
@@ -111,9 +120,13 @@
 	</div>
 
 	<div aura:id="successForm" class="hide">
-		Success !
-		<br/>
-		<button class="slds-button slds-button--inverse" onclick="{!c.nextCustomer}">Next Customer</button>
+		<div class="successDiv">
+			Success !
+		</div>
+
+		<div style="text-align: center">
+			<button class="slds-button slds-button--brand" onclick="{!c.nextCustomer}">Next Customer</button>
+		</div>
 	</div>
 
 

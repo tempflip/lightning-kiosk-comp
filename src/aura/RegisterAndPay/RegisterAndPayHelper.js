@@ -1,10 +1,13 @@
 ({
-	regCustomer : function(cmp, firstName, lastName, email, ccNumber, imgData) {
+	regCustomer : function(cmp, firstName, lastName, email, ccNumber, expMonth, expYear, amount, imgData) {
 		var params = {
 			firstName : firstName,
 			lastName : lastName,
 			email : email,
 			ccNumber : ccNumber,
+			expMonth : expMonth,
+			expYear : expYear,
+			amount : amount,
 			imgData : imgData
 		};
 

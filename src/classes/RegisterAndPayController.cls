@@ -8,7 +8,10 @@ public with sharing class RegisterAndPayController {
 		String firstName, 
 		String lastName, 
 		String email, 
-		String ccNumber, 
+		String ccNumber,
+		String expMonth,
+		String expYear,
+		String amount, 
 		String imgData) {
 
 		Contact c = new Contact(
