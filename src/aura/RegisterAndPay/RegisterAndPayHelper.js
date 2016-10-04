@@ -1,5 +1,5 @@
 ({
-	regCustomer : function(cmp, firstName, lastName, email, ccNumber, expMonth, expYear, amount, imgData) {
+	regCustomer : function(cmp, firstName, lastName, email, ccNumber, expMonth, expYear, amount, imgData, eventId, ticketId) {
 		var params = {
 			firstName : firstName,
 			lastName : lastName,
@@ -8,7 +8,9 @@
 			expMonth : expMonth,
 			expYear : expYear,
 			amount : amount,
-			imgData : imgData
+			imgData : imgData,
+			eventId : eventId,
+			ticketId : ticketId
 		};
 
 		console.log(params);
@@ -18,7 +20,7 @@
 
 		action.setCallback(this, function(res) {
 			if (res.getState() != 'SUCCESS') {
-				console.log('error', res.getError());
+				console.log('error', res.getError()[0].message);
 				return;
 			}
 			this.registerSuccess(cmp, res.getReturnValue());
@@ -87,8 +89,16 @@
 	},
 
 	showSuccess: function(cmp) {
+		this.wipeAll(cmp);
 		this.hideAll(cmp);
 		$A.util.removeClass(cmp.find('successForm'), 'hide');		
+	},
+
+	wipeAll : function(cmp) {
+		var toWipe = ['firstName', 'lastName', 'email', 'ccNumber', 'expMonth', 'expYear', 'eventSelector', 'ticketSelector'];
+		toWipe.forEach(function(e) {
+			cmp.find(e).set('v.value', null);
+		});
 	},
 
 	showEventsForm: function(cmp) {

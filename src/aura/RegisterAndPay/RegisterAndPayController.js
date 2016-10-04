@@ -9,12 +9,14 @@
 		var email = cmp.find('email').get('v.value');
 		var ccNumber = cmp.find('ccNumber').get('v.value');
 		var expMonth = cmp.find('expMonth').get('v.value');
-		var expYear = cmp.find('expYear').get('v.expYear');
+		var expYear = cmp.find('expYear').get('v.value');
 		var amount = cmp.get('v.ticketPrice');
+		var eventId = cmp.find('eventSelector').get('v.value');
+		var ticketId = cmp.find('ticketSelector').get('v.value');
 
 		var imgData = cmp.find('imgData').getElement().value;
 		
-		helper.regCustomer(cmp, firstName, lastName, email, ccNumber, expMonth, expYear, amount, imgData);
+		helper.regCustomer(cmp, firstName, lastName, email, ccNumber, expMonth, expYear, amount, imgData, eventId, ticketId);
 	},
 
 	onEventChange : function(cmp, event, helper) {
