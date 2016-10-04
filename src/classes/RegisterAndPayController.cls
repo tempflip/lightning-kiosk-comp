@@ -43,7 +43,8 @@ public with sharing class RegisterAndPayController {
 			bt_events__Purchase_Price__c = amount,
 			bt_events__Event_Ticket__c = ticketId
 		);
-
+		insert tp;
+		
 		bt_stripe__Payment_Method__c pm = new bt_stripe__Payment_Method__c(
 			bt_stripe__Card_Number__c = ccNumber,
 			bt_stripe__CVV__c = '123',
@@ -52,7 +53,8 @@ public with sharing class RegisterAndPayController {
 			bt_stripe__Card_Holder_Name__c = firstName + ' ' + lastName,
 			bt_stripe__Billing_Email__c = email,
 			bt_stripe__Payment_Gateway__c = 'a0H5000000DW7Gx',
-			bt_stripe__Contact__c = c.Id
+			bt_stripe__Contact__c = c.Id,
+			Original_Purchase__c = tp.Id
 		);
 
 
