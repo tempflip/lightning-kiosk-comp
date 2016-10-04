@@ -4,7 +4,7 @@ public with sharing class RegisterAndPayController {
 	}
 
 	@AuraEnabled
-	public static Contact regCustomer(
+	public static Id regCustomer(
 		String firstName, 
 		String lastName, 
 		String email, 
@@ -62,19 +62,9 @@ public with sharing class RegisterAndPayController {
 		insert pm;
 		system.debug('+++ ' + pm);
 
-		/*
-		bt_stripe__Transaction__c tra = new bt_stripe__Transaction__c(
-			bt_stripe__Payment_Method__c = pm.Id,
-			bt_stripe__Amount__c = amount
-		);
-
-		insert tra;
-		*/
-
-		return c;
+		return pm.Id;
 
 	}
-
 	
 	@AuraEnabled
 	public static bt_events__Event__c[] getEventList() {
@@ -87,4 +77,21 @@ public with sharing class RegisterAndPayController {
 		return evList;
 	}
 
+
+	@AuraEnabled
+	public static Integer chargePM(String pmId) {
+		system.debug('+++ pmId ' + pmId);
+		bt_stripe__Transaction__c[] trList = [SELECT Id 
+										FROM bt_stripe__Transaction__c
+										WHERE bt_stripe__Transaction_Status__c = 'Open'
+										AND bt_stripe__Payment_Method__c = :pmId];
+
+		system.debug('+++ trList ' + trList );
+		
+		for (bt_stripe__Transaction__c tra : trList) {
+			tra.bt_stripe__Transaction_Status__c = 'Process';
+		}
+		update trList;
+		return 1;
+	}
 }

@@ -42,8 +42,33 @@
 		$A.enqueueAction(action);
 	},
 
-	registerSuccess: function(cmp, cus) {
-		console.log('juuhuuu', cus.Id);
+	chargePM: function(cmp, pmId) {
+		var action = cmp.get('c.chargePM');
+		action.setParams({pmId : pmId});
+		action.setCallback(this, function(res) {
+			console.log('muuuu');
+			if (res.getState() != 'SUCCESS') {
+				console.log('error in chargepm', res.getError()[0].message );
+				return;
+			}
+
+			console.log('charge is done');
+		});
+		$A.enqueueAction(action);
+		console.log('chargePm is fired');
+	},
+
+	registerSuccess: function(cmp, pmId) {
+
+		var that = this;
+		console.log('pm id: ', pmId);
+		setTimeout($A.getCallback(function() {
+					console.log('timeout fired!');
+					if (cmp.isValid()) {
+						console.log('timeouted fired');
+						that.chargePM(cmp, pmId);
+					}
+				}), 4000);
 		this.showSuccess(cmp);
 	},
 
